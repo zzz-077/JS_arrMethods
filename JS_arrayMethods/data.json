@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "name": "Vaska Zardiashvili",
+        "username": "zzz077",
+        "age": 19,
+        "height": 184,
+        "price": 124
+    },
+    {
+        "id": 2,
+        "name": "David Elizbarashvili",
+        "username": "criminal_panda",
+        "age": 18,
+        "height": 188,
+        "price": 120
+    },
+    {
+        "id": 3,
+        "name": "Davit Tevzadze",
+        "username": "Fisher",
+        "age": 22,
+        "height": 172,
+        "price": 137
+    },
+    {
+        "id": 4,
+        "name": "Merab Vardiashvili",
+        "username": "White_Duke",
+        "age": 21,
+        "height": 180,
+        "price": 121
+    }
+]

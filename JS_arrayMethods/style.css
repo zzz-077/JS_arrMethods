@@ -1,0 +1,56 @@
+body {
+    background-color: rgba(0, 0, 0, 0.771);
+    overflow: hidden;
+}
+.cont {
+    width: 100%;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.cont div {
+    width: 200px;
+    height: 200px;
+    flex-grow: 1;
+    background-color: red;
+}
+.cont div.active {
+    background-color: green;
+}
+.table_cont {
+    width: 100%;
+}
+
+.table_cont table {
+    width: 100%;
+    text-align: left;
+}
+
+.table_cont table tr th {
+    background-color: whitesmoke;
+    font-size: 1.25rem;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: #2e2c2c;
+    user-select: none;
+}
+.table_cont table tbody tr td:nth-child(1) {
+    padding: 0;
+    text-align: center;
+}
+.table_cont table tr th.active {
+    background-color: rgba(0, 0, 0, 0.196);
+    color: white;
+}
+.table_cont table tr td {
+    background-color: rgb(189, 186, 186);
+    font-size: 1.25rem;
+    padding: 0.25rem 0.5rem;
+    user-select: none;
+}
