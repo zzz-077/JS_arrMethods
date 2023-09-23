@@ -140,25 +140,28 @@ boxes.forEach((bx) => {
 });
 */
 
-/*========litle array method  Proect========*/
+/*========litle array method  Project========*/
 
-const button_h1 = document.querySelector(".btn h1");
-button_h1.addEventListener("click", () => {});
+const table_tHead_th = document.querySelectorAll(
+    ".table_cont table thead tr th"
+);
+const table_cont_table_tbody = document.querySelector(
+    ".table_cont table tbody"
+);
+
 fetch("data.json")
     .then((res) => {
         return res.json();
     })
     .then((tbl) => {
         let print = "";
-        let columns = [];
-        let arr = [];
         for (let i = 0; i < tbl.length; i++) {
             let plr = tbl[i];
             print += `
         <tr>
     
                     <td>${plr.id}</td>
-                    <td>${plr.name /*.split(" ")[0]*/}</td>
+                    <td>${plr.name.split(" ")[0]}</td>
                     <td>${plr.username}</td>
                     <td>${plr.age}</td>
                     <td>${plr.height}</td>
@@ -166,21 +169,54 @@ fetch("data.json")
                 </tr>
     `;
             if (i == tbl.length - 1) {
-                arr.sort((a, b) => {
-                    return (document.querySelector(
-                        ".table_cont table tbody"
-                    ).innerHTML += print);
-                });
-                // document.querySelector(".table_cont table tbody").innerHTML +=
-                //     print;
+                table_cont_table_tbody.innerHTML += print;
             }
-            columns.push(plr.age);
-            arr.push(print);
         }
+        const schedult_rows = document.querySelectorAll(
+            ".table_cont table tbody tr"
+        );
 
-        // console.log(columns);
-        columns.sort((a, b) => {
-            return a - b;
+        table_tHead_th.forEach((hd, indx) => {
+            let sort_arc = true;
+            hd.addEventListener("click", () => {
+                table_tHead_th.forEach((hd) => {
+                    hd.classList.remove("active");
+                });
+                document.querySelectorAll("td").forEach((td) => {
+                    td.classList.remove("active");
+                });
+
+                if (indx != 0) {
+                    hd.classList.add("active");
+                    schedult_rows.forEach((row) => {
+                        row.querySelectorAll("td")[indx].classList.add(
+                            "active"
+                        );
+                        sort_arc = hd.classList.contains("asc") ? false : true;
+                        sorted_func(indx, sort_arc);
+                    });
+                }
+            });
         });
-        console.log(arr);
+        function sorted_func(column, sort_arc) {
+            [...schedult_rows]
+                .sort((a, b) => {
+                    let first_row = a
+                        .querySelectorAll("td")
+                        [column].textContent.toLowerCase();
+                    let second_row = b
+                        .querySelectorAll("td")
+                        [column].textContent.toLowerCase();
+                    return sort_arc
+                        ? first_row < second_row
+                            ? 1
+                            : -1
+                        : first_row < second_row
+                        ? -1
+                        : 1;
+                })
+                .map((schedult_map) => {
+                    table_cont_table_tbody.appendChild(schedult_map);
+                });
+        }
     });

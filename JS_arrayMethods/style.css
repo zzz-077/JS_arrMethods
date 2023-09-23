@@ -47,10 +47,17 @@ body {
 .table_cont table tr th.active {
     background-color: rgba(0, 0, 0, 0.196);
     color: white;
+    transition: all 0.3s;
 }
 .table_cont table tr td {
     background-color: rgb(189, 186, 186);
     font-size: 1.25rem;
     padding: 0.25rem 0.5rem;
     user-select: none;
+    transition: all 0.3s;
+}
+.table_cont table tr td.active {
+    background-color: rgba(0, 0, 0, 0.196);
+    color: white;
+    transition: all 0.3s;
 }
