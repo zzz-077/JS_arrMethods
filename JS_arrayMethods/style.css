@@ -31,6 +31,14 @@ body {
     text-align: left;
 }
 
+.table_cont table tr {
+    transition: all 0.3s;
+    opacity: 1;
+}
+.table_cont table tr.hide {
+    opacity: 0;
+    transform: translateX(100%);
+}
 .table_cont table tr th {
     background-color: whitesmoke;
     font-size: 1.25rem;
@@ -44,11 +52,13 @@ body {
     padding: 0;
     text-align: center;
 }
-.table_cont table tr th.active {
+.table_cont table tr th.active,
+.table_cont table thead tr th:hover {
     background-color: rgba(0, 0, 0, 0.196);
     color: white;
     transition: all 0.3s;
 }
+
 .table_cont table tr td {
     background-color: rgb(189, 186, 186);
     font-size: 1.25rem;
@@ -60,4 +70,12 @@ body {
     background-color: rgba(0, 0, 0, 0.196);
     color: white;
     transition: all 0.3s;
+}
+.search_box {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+.search_box input {
+    outline: none;
 }

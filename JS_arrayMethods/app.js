@@ -148,6 +148,7 @@ const table_tHead_th = document.querySelectorAll(
 const table_cont_table_tbody = document.querySelector(
     ".table_cont table tbody"
 );
+const search_box_input = document.querySelector(".search_box input");
 
 fetch("data.json")
     .then((res) => {
@@ -192,10 +193,10 @@ fetch("data.json")
                         row.querySelectorAll("td")[indx].classList.add(
                             "active"
                         );
-                        sort_arc = hd.classList.contains("asc") ? false : true;
-                        sorted_func(indx, sort_arc);
                     });
                 }
+                sort_arc = hd.classList.contains("asc") ? false : true;
+                sorted_func(indx, sort_arc);
             });
         });
         function sorted_func(column, sort_arc) {
@@ -219,4 +220,27 @@ fetch("data.json")
                     table_cont_table_tbody.appendChild(schedult_map);
                 });
         }
+
+        search_box_input.addEventListener("input", () => {
+            schedult_rows.forEach((srch) => {
+                let text_value = srch.textContent.toLowerCase();
+                let search_value = search_box_input.value.toLowerCase();
+                let x = 0;
+
+                srch.classList.toggle(
+                    "hide",
+                    text_value.indexOf(search_value) < 0
+                );
+                if (srch.classList.contains("hide")) {
+                    setTimeout(() => {
+                        srch.style.display = "none";
+                    }, 350);
+                }
+                if (!srch.classList.contains("hide")) {
+                    setTimeout(() => {
+                        srch.style.display = "";
+                    }, 350);
+                }
+            });
+        });
     });
