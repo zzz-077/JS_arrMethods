@@ -186,7 +186,6 @@ fetch("data.json")
                 document.querySelectorAll("td").forEach((td) => {
                     td.classList.remove("active");
                 });
-
                 if (indx != 0) {
                     hd.classList.add("active");
                     schedult_rows.forEach((row) => {
@@ -194,9 +193,9 @@ fetch("data.json")
                             "active"
                         );
                     });
+                    sort_arc = hd.classList.contains("asc") ? false : true;
+                    sorted_func(indx, sort_arc);
                 }
-                sort_arc = hd.classList.contains("asc") ? false : true;
-                sorted_func(indx, sort_arc);
             });
         });
         function sorted_func(column, sort_arc) {

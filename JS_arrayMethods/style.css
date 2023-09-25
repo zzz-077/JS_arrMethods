@@ -78,4 +78,8 @@ body {
 }
 .search_box input {
     outline: none;
+    background-color: ;
+    width: 100%;
+    display: flex;
+    justify-content: end;
 }
